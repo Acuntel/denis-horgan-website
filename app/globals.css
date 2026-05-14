@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-fraunces: "Fraunces", Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: #1a1a1a;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer components {
+  .container-px {
+    @apply px-5 sm:px-8 lg:px-12;
+  }
+  .container-x {
+    @apply mx-auto max-w-container container-px;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-teal px-6 py-3 text-sm font-semibold text-white shadow-card transition hover:bg-teal-600 hover:shadow-cardHover active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-navy/15 bg-white px-6 py-3 text-sm font-semibold text-navy transition hover:border-navy hover:bg-navy hover:text-white;
+  }
+  .btn-navy {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy-900 active:scale-[0.98];
+  }
+  .h-eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-teal;
+  }
+  .h-display {
+    @apply font-sans text-[40px] sm:text-[48px] lg:text-[56px] font-semibold text-navy tracking-tightish leading-[1.05];
+  }
+  .h-section {
+    @apply font-sans text-[28px] sm:text-[32px] lg:text-[40px] font-semibold text-navy tracking-tightish leading-[1.1];
+  }
+  .lede {
+    @apply text-[17px] sm:text-[18px] leading-relaxed text-mute;
+  }
+  .card {
+    @apply rounded-2xl bg-white shadow-card transition hover:shadow-cardHover;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-teal-600;
+  }
+  .divider {
+    @apply h-px w-full bg-line;
+  }
+}
+
+@layer utilities {
+  .italic-emph {
+    font-style: italic;
+    font-feature-settings: "ss01";
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Subtle scroll-reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}

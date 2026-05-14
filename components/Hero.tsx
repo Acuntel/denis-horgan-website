@@ -11,7 +11,8 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-cream-50">
       <div className="grain absolute inset-0 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-cream-100 via-cream-50 to-cream-100/60 pointer-events-none" />
-      <div className="relative container-x pt-16 pb-24 lg:pt-28 lg:pb-36 grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="relative container-x pt-16 pb-24 lg:pt-28 lg:pb-32 grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* LEFT: copy */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,49 +66,50 @@ export default function Hero() {
           </div>
         </motion.div>
 
+        {/* RIGHT: portrait + credential plate */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.0, ease: "easeOut", delay: 1.3 }}
-          className="relative"
+          className="relative max-w-[420px] mx-auto w-full"
         >
-          <div className="relative aspect-[4/5] max-w-md mx-auto rounded-[28px] overflow-hidden shadow-cardHover">
-            <div className="absolute inset-0 border-[6px] border-cream-50 rounded-[28px] z-20 pointer-events-none" />
-            <div className="absolute inset-[6px] border border-teal/40 rounded-[22px] z-20 pointer-events-none" />
-            <Image
-              src={DENIS.headshot}
-              alt={DENIS.name}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent p-6 z-10">
-              <div className="text-cream-50 font-serif text-xl">
-                {DENIS.name}
-              </div>
-              <div className="text-cream-50/85 text-[10px] uppercase tracking-[0.22em] mt-1">
+          {/* Decorative brass corners */}
+          <Corner className="-top-2 -left-2" rotation={0} />
+          <Corner className="-top-2 -right-2" rotation={90} />
+          <Corner className="-bottom-2 -left-2" rotation={-90} />
+          <Corner className="-bottom-2 -right-2" rotation={180} />
+
+          {/* Portrait with clean white mat + thin brass keyline */}
+          <div className="relative aspect-[4/5] rounded-[2px] overflow-hidden bg-cream-50 p-3 shadow-cardHover">
+            <div className="relative h-full w-full overflow-hidden rounded-[2px] ring-1 ring-teal/35">
+              <Image
+                src={DENIS.headshot}
+                alt={DENIS.name}
+                fill
+                className="object-cover object-center"
+                priority
+                sizes="(min-width: 1024px) 420px, (min-width: 640px) 60vw, 90vw"
+              />
+            </div>
+          </div>
+
+          {/* Credential plate, sits under portrait like a gallery label */}
+          <div className="mt-6 mx-auto max-w-[360px] text-center">
+            <div className="font-serif text-[22px] tracking-tighter2 text-navy">
+              {DENIS.name}
+            </div>
+            <div className="mt-2 flex items-center justify-center gap-3">
+              <div className="h-px w-8 bg-teal/60" />
+              <div className="text-[9.5px] uppercase tracking-[0.28em] text-mute">
                 Redfin Principal Agent
               </div>
+              <div className="h-px w-8 bg-teal/60" />
             </div>
-          </div>
-          <div className="absolute -left-3 sm:-left-10 top-12 hidden sm:block card px-5 py-4 max-w-[210px] rotate-[-3deg] bg-cream-50">
-            <div className="text-[10px] uppercase tracking-[0.18em] text-mute">
-              Closed transactions
-            </div>
-            <div className="text-3xl font-serif text-navy mt-1">359</div>
-            <div className="text-[11px] text-teal-700 font-medium tracking-wide">
-              $144M total volume
-            </div>
-          </div>
-          <div className="absolute -right-2 sm:-right-8 bottom-12 hidden sm:block card px-5 py-4 max-w-[230px] rotate-[3deg] bg-cream-50">
-            <div className="text-[10px] uppercase tracking-[0.18em] text-mute">
-              Home market
-            </div>
-            <div className="text-lg font-serif text-navy mt-0.5">
-              Downers Grove
-            </div>
-            <div className="text-[11px] text-teal-700 font-medium tracking-wide">
-              48 deals and counting
+
+            <div className="mt-5 grid grid-cols-3 gap-2 text-center">
+              <Stat top="359" bottom="Homes Sold" />
+              <Stat top="$144M" bottom="Closed" mid />
+              <Stat top="4.9★" bottom="185 Reviews" />
             </div>
           </div>
         </motion.div>
@@ -124,5 +126,47 @@ export default function Hero() {
         Continue
       </Link>
     </section>
+  );
+}
+
+function Corner({
+  className,
+  rotation,
+}: {
+  className: string;
+  rotation: number;
+}) {
+  return (
+    <svg
+      className={`absolute h-5 w-5 text-teal/70 pointer-events-none ${className}`}
+      style={{ transform: `rotate(${rotation}deg)` }}
+      viewBox="0 0 20 20"
+      fill="none"
+      aria-hidden
+    >
+      <path d="M0 1 L0 0 L1 0" stroke="currentColor" strokeWidth="1.2" />
+      <path d="M0 6 L0 0 L6 0" stroke="currentColor" strokeWidth="0.6" />
+    </svg>
+  );
+}
+
+function Stat({
+  top,
+  bottom,
+  mid,
+}: {
+  top: string;
+  bottom: string;
+  mid?: boolean;
+}) {
+  return (
+    <div className={`py-1.5 ${mid ? "border-x border-line" : ""}`}>
+      <div className="font-serif text-[19px] text-navy leading-none tracking-tighter2">
+        {top}
+      </div>
+      <div className="mt-1.5 text-[9px] uppercase tracking-[0.18em] text-mute">
+        {bottom}
+      </div>
+    </div>
   );
 }

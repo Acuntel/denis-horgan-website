@@ -10,7 +10,7 @@ ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 # --- Resend (lead notification emails) ---
 RESEND_API_KEY=re_...
 # Address Denis receives leads at:
-LEAD_TO_EMAIL=dennis.horgan@redfin.com
+LEAD_TO_EMAIL=denis.horgan@redfin.com
 # Verified Resend sender (must be a domain Brady verified in Resend):
 LEAD_FROM_EMAIL=Denis Horgan Website <noreply@denishorgan.com>
 

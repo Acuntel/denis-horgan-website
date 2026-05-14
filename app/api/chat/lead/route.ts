@@ -113,7 +113,7 @@ export async function POST(req: NextRequest) {
     ].filter(Boolean) as string[];
     const text = lines.join("\n");
 
-    const to = process.env.LEAD_TO_EMAIL || "dennis.horgan@redfin.com";
+    const to = process.env.LEAD_TO_EMAIL || "denis.horgan@redfin.com";
     const from =
       process.env.LEAD_FROM_EMAIL ||
       "Denis Horgan Website <onboarding@resend.dev>";

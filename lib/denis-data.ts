@@ -9,7 +9,7 @@ export const DENIS = {
   primaryCity: "Downers Grove, IL",
   phone: "(630) 870-1800",
   phoneHref: "tel:+16308701800",
-  email: "dennis.horgan@redfin.com",
+  email: "denis.horgan@redfin.com",
   redfinProfile: "https://www.redfin.com/real-estate-agents/denis-horgan",
   redfinReviews:
     "https://www.redfin.com/real-estate-agents/denis-horgan/reviews",

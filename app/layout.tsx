@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
+import PageLoader from "@/components/PageLoader";
 import { DENIS } from "@/lib/denis-data";
 
 const inter = Inter({
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     template: `%s | ${DENIS.name}`,
   },
   description:
-    "Denis Horgan — top-producing Redfin Principal Agent serving Downers Grove and the western Chicago suburbs. 359 homes sold, $144M in transactions, 4.9★ from 185 clients.",
+    "Denis Horgan, top-producing Redfin Principal Agent serving Downers Grove and the western Chicago suburbs. 359 homes sold. $144M in transactions. 4.9★ from 185 clients.",
   keywords: [
     "Denis Horgan",
     "Redfin agent Downers Grove",
@@ -58,6 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body>
+        <PageLoader />
         <Nav />
         <main>{children}</main>
         <Footer />

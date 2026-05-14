@@ -47,12 +47,12 @@ export default function ListingsClient({
 
   return (
     <div className="container-x pb-24">
-      <div className="card p-4 sm:p-5 sticky top-16 z-10 backdrop-blur bg-white/95 flex flex-col lg:flex-row gap-3 lg:items-center">
+      <div className="card p-4 sm:p-5 sticky top-16 z-10 backdrop-blur bg-cream-50/95 flex flex-col lg:flex-row gap-3 lg:items-center">
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search by address, city, or ZIP"
-          className="flex-1 rounded-full border border-line bg-sand px-4 py-2.5 text-sm focus:outline-none focus:border-teal"
+          className="flex-1 rounded-full border border-line bg-cream-100 px-4 py-2.5 text-sm focus:outline-none focus:border-teal"
         />
         <Select
           value={status}
@@ -120,7 +120,7 @@ function Select({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="rounded-full border border-line bg-white px-3 py-2 text-sm focus:outline-none focus:border-teal"
+        className="rounded-full border border-line bg-cream-50 px-3 py-2 text-sm focus:outline-none focus:border-teal"
       >
         {options.map((o) => (
           <option key={o} value={o}>

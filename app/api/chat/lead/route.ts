@@ -14,7 +14,7 @@ async function summarizeTranscript(
   if (!apiKey || transcript.length === 0)
     return {
       summary:
-        "(Summary unavailable — Anthropic key missing or empty transcript.)",
+        "(Summary unavailable: Anthropic key missing or empty transcript.)",
       englishTranscript: transcript
         .map(
           (m) => `${m.role === "user" ? leadName : "Assistant"}: ${m.content}`,
@@ -90,8 +90,8 @@ export async function POST(req: NextRequest) {
 
     const lines = [
       isFollowUp
-        ? "🤖 AI Chat — Conversation Complete"
-        : "🤖 AI Chat — New Visitor Started Chatting",
+        ? "AI Chat: Conversation Complete"
+        : "AI Chat: New Visitor Started Chatting",
       "",
       `Name: ${name}`,
       `Email: ${email}`,
@@ -108,7 +108,7 @@ export async function POST(req: NextRequest) {
             englishTranscript,
           ]
         : [
-            "(Visitor just opened the chat — transcript will follow when conversation ends.)",
+            "(Visitor just opened the chat. Transcript will follow when conversation ends.)",
           ]),
     ].filter(Boolean) as string[];
     const text = lines.join("\n");
@@ -118,8 +118,8 @@ export async function POST(req: NextRequest) {
       process.env.LEAD_FROM_EMAIL ||
       "Denis Horgan Website <onboarding@resend.dev>";
     const subject = isFollowUp
-      ? `Chat Complete: ${name} — ${intent || "General"}`
-      : `New Chat Lead: ${name} — ${intent || "General"}`;
+      ? `Chat Complete: ${name} (${intent || "General"})`
+      : `New Chat Lead: ${name} (${intent || "General"})`;
 
     if (!process.env.RESEND_API_KEY) {
       console.log("=== LEAD (Resend not configured) ===");

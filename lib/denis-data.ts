@@ -1,5 +1,5 @@
 // All facts about Denis Horgan, sourced from his Redfin profile.
-// Single source of truth — homepage, chatbot system prompt, SEO meta all read from here.
+// Single source of truth for homepage, chatbot system prompt, and SEO meta.
 
 export const DENIS = {
   name: "Denis Horgan",
@@ -46,7 +46,7 @@ export const NEIGHBORHOODS = [
     slug: "downers-grove",
     name: "Downers Grove",
     blurb:
-      "Denis's home market — 48 closed deals and counting. Tree-lined streets, top schools, and an easy Metra ride to the Loop.",
+      "Denis's home market, with 48 closed deals and counting. Tree-lined streets, top schools, and an easy Metra ride to the Loop.",
     image:
       "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80",
   },
@@ -78,7 +78,7 @@ export const NEIGHBORHOODS = [
     slug: "lombard",
     name: "Lombard",
     blurb:
-      "The Lilac Village — value, location, and Yorktown Center at your doorstep. A favorite for first-time buyers.",
+      "The Lilac Village. Value, location, and Yorktown Center at your doorstep. A favorite for first-time buyers.",
     image:
       "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=1200&q=80",
   },
@@ -110,7 +110,7 @@ export const NEIGHBORHOODS = [
     slug: "lisle",
     name: "Lisle",
     blurb:
-      "The Arboretum Village — green space, top-rated schools, and access to I-88 and Metra. Repeat business is the norm.",
+      "The Arboretum Village. Green space, top-rated schools, and access to I-88 and Metra. Repeat business is the norm.",
     image:
       "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=80",
   },
@@ -155,7 +155,7 @@ export type Testimonial = {
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "Denis is an extraordinary person, an excellent communicator who went beyond the norm. I'm 82 and he was reassuring as this was rather overwhelming at times. I have the utmost respect for him. The world is a better place with Denis in it — we need more like him.",
+      "Denis is an extraordinary person, an excellent communicator who went beyond the norm. I'm 82 and he was reassuring as this was rather overwhelming at times. I have the utmost respect for him. The world is a better place with Denis in it. We need more like him.",
     city: "Aurora, IL",
     role: "Seller",
     date: "2026",
@@ -214,19 +214,19 @@ export const TESTIMONIALS: Testimonial[] = [
 export const FAQS = [
   {
     q: "What areas do you cover?",
-    a: "I work all over the western Chicago suburbs — Downers Grove, Naperville, Wheaton, Glen Ellyn, Lombard, Westmont, Darien, Clarendon Hills, Lisle, and plenty more. If it's in DuPage, western Cook, or Will County, I likely know it well.",
+    a: "I work all over the western Chicago suburbs. Downers Grove, Naperville, Wheaton, Glen Ellyn, Lombard, Westmont, Darien, Clarendon Hills, Lisle, and plenty more. If it's in DuPage, western Cook, or Will County, I likely know it well.",
   },
   {
     q: "Do you work with both buyers and sellers?",
-    a: "Yes — I work both sides, and I've closed 359 transactions doing so. Many of my sellers were past buyers, and many of my buyers were past sellers. I bring the same hands-on service either way.",
+    a: "Yes. I work both sides, and I've closed 359 transactions doing so. Many of my sellers were past buyers, and many of my buyers were past sellers. I bring the same hands-on service either way.",
   },
   {
     q: "How long does a typical Illinois closing take?",
-    a: "Most residential transactions go from accepted contract to closing in 30–45 days. Cash deals can be faster, financed deals can stretch longer if the appraisal or inspection adds complications. I'll set realistic expectations on day one.",
+    a: "Most residential transactions go from accepted contract to closing in 30 to 45 days. Cash deals can be faster, financed deals can stretch longer if the appraisal or inspection adds complications. I'll set realistic expectations on day one.",
   },
   {
     q: "Should I get pre-approved before we look at homes?",
-    a: "Absolutely — and it's free. A pre-approval tells you exactly what you can afford and tells sellers you're serious. I can connect you with several lenders I trust if you don't have one yet.",
+    a: "Absolutely, and it's free. A pre-approval tells you exactly what you can afford and tells sellers you're serious. I can connect you with several lenders I trust if you don't have one yet.",
   },
   {
     q: "How do you price a listing?",
@@ -274,7 +274,7 @@ export const SEED_LISTINGS = [
     status: "Pending" as const,
     featured: true,
     description:
-      "Spacious 3-bed townhome with attached garage, finished basement, and easy access to O'Hare. 3D walkthrough available — ask for the tour link.",
+      "Spacious 3-bed townhome with attached garage, finished basement, and easy access to O'Hare. 3D walkthrough available. Ask for the tour link.",
     photos: [
       "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&q=85",
     ],

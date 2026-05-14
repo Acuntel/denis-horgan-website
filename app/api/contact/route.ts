@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       process.env.LEAD_FROM_EMAIL ||
       "Denis Horgan Website <onboarding@resend.dev>";
 
-    const subject = `New Website Inquiry: ${name} — ${intent || "General"}`;
+    const subject = `New Website Inquiry: ${name} (${intent || "General"})`;
     const text = [
       `New inquiry from denishorgan.com`,
       ``,

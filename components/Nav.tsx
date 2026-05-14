@@ -25,50 +25,53 @@ export default function Nav() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all ${
+      className={`sticky top-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-md border-b border-line"
+          ? "bg-cream-50/90 backdrop-blur-md border-b border-line"
           : "bg-transparent"
       }`}
     >
-      <div className="container-x flex h-16 items-center justify-between">
+      <div className="container-x flex h-[72px] items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-3 group"
           aria-label="Home"
         >
-          <div className="grid h-9 w-9 place-items-center rounded-full bg-navy text-white text-sm font-bold">
-            DH
+          <div className="relative grid h-10 w-10 place-items-center rounded-full border border-teal/40 bg-cream-50">
+            <span className="font-serif italic text-navy text-[15px] -mt-0.5">
+              DH
+            </span>
+            <span className="absolute inset-0 rounded-full border border-teal/15" />
           </div>
           <div className="hidden sm:block leading-tight">
-            <div className="text-[15px] font-semibold text-navy">
+            <div className="font-serif text-[17px] text-navy tracking-tightish">
               {DENIS.name}
             </div>
-            <div className="text-[11px] text-mute tracking-wide uppercase">
+            <div className="text-[9.5px] text-mute tracking-[0.22em] uppercase mt-0.5">
               {DENIS.title}
             </div>
           </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center gap-8">
           {LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-navy/80 hover:text-navy transition"
+              className="text-[13px] font-medium uppercase tracking-[0.16em] text-navy/75 hover:text-teal-700 transition"
             >
               {l.label}
             </Link>
           ))}
           <a
             href={DENIS.phoneHref}
-            className="flex items-center gap-1.5 text-sm font-semibold text-navy"
+            className="flex items-center gap-1.5 text-[13px] font-medium text-navy"
           >
-            <Phone size={14} /> {DENIS.phone}
+            <Phone size={13} /> {DENIS.phone}
           </a>
           <Link
             href="/contact?intent=valuation"
-            className="btn-primary !py-2 !px-4"
+            className="btn-navy !py-2.5 !px-5 !text-[12px]"
           >
             Home Valuation
           </Link>
@@ -84,28 +87,28 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-line bg-white">
-          <div className="container-x py-4 flex flex-col gap-3">
+        <div className="md:hidden border-t border-line bg-cream-50">
+          <div className="container-x py-5 flex flex-col gap-3">
             {LINKS.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="py-2 text-base font-medium text-navy"
+                className="py-2 text-[13px] font-medium uppercase tracking-[0.16em] text-navy"
               >
                 {l.label}
               </Link>
             ))}
             <a
               href={DENIS.phoneHref}
-              className="py-2 text-base font-semibold text-navy flex items-center gap-2"
+              className="py-2 text-base font-medium text-navy flex items-center gap-2"
             >
               <Phone size={16} /> {DENIS.phone}
             </a>
             <Link
               href="/contact?intent=valuation"
               onClick={() => setOpen(false)}
-              className="btn-primary"
+              className="btn-navy"
             >
               Home Valuation
             </Link>

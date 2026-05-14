@@ -41,7 +41,7 @@ export default async function ListingDetail({
   const photos = listing.photos?.length ? listing.photos : [];
 
   return (
-    <article className="bg-white">
+    <article className="bg-cream-50">
       <div className="container-x pt-8">
         <Link
           href="/listings"

@@ -249,7 +249,7 @@ export default function PropertyForm({
               value={form.description}
               onChange={(e) => update("description", e.target.value)}
               className={input}
-              placeholder="Describe the home — highlight updates, location, schools, etc."
+              placeholder="Describe the home. Highlight updates, location, schools, etc."
             />
           </Field>
 

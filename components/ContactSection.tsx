@@ -4,73 +4,77 @@ import { Phone, Mail, MessageSquare } from "lucide-react";
 
 export default function ContactSection() {
   return (
-    <section className="bg-sand">
-      <div className="container-x py-20 lg:py-28">
-        <div className="card p-8 sm:p-12 lg:p-16 bg-gradient-to-br from-white to-sand">
-          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
+    <section className="bg-cream-200 relative">
+      <div className="grain absolute inset-0 pointer-events-none" />
+      <div className="relative container-x py-24 lg:py-32">
+        <div className="rounded-3xl overflow-hidden bg-cream-50 shadow-card border border-line/60 p-10 sm:p-14 lg:p-20">
+          <div className="grid lg:grid-cols-[1.4fr_1fr] gap-14 items-center">
             <div>
-              <div className="h-eyebrow">Ready when you are</div>
-              <h2 className="h-section mt-2 text-balance">
-                Buying, selling, or just curious about your home's value?{" "}
-                <span className="italic-emph text-teal">Let's talk.</span>
+              <div className="flex items-center gap-3">
+                <div className="h-px w-10 bg-teal" />
+                <div className="h-eyebrow">Ready when you are</div>
+              </div>
+              <h2 className="h-section mt-4 text-balance">
+                Buying, selling, or simply curious about your home's value?{" "}
+                <span className="italic-emph text-teal-600">Let's talk.</span>
               </h2>
-              <p className="lede mt-4 max-w-xl">
+              <p className="lede mt-5 max-w-xl">
                 No pressure, no spam, no hard sell. Denis personally responds to
-                every inquiry — usually within the hour.
+                every inquiry, usually within the hour.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href={DENIS.phoneHref} className="btn-primary">
-                  <Phone size={16} /> Call {DENIS.phone}
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a href={DENIS.phoneHref} className="btn-navy">
+                  <Phone size={15} /> Call {DENIS.phone}
                 </a>
                 <Link href="/contact" className="btn-ghost">
-                  <Mail size={16} /> Send a message
+                  <Mail size={15} /> Send a message
                 </Link>
               </div>
             </div>
-            <div className="space-y-4">
-              <div className="card p-5">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-full bg-teal-50 text-teal">
-                    <MessageSquare size={18} />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-navy">
-                      Chat 24/7
-                    </div>
-                    <div className="text-xs text-mute">
-                      Multilingual AI assistant — bottom-right of every page
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="card p-5">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-full bg-teal-50 text-teal">
-                    <Phone size={18} />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-navy">
-                      Call or text
-                    </div>
-                    <div className="text-xs text-mute">{DENIS.phone}</div>
-                  </div>
-                </div>
-              </div>
-              <div className="card p-5">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-10 w-10 place-items-center rounded-full bg-teal-50 text-teal">
-                    <Mail size={18} />
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold text-navy">Email</div>
-                    <div className="text-xs text-mute">{DENIS.email}</div>
-                  </div>
-                </div>
-              </div>
+            <div className="space-y-3">
+              <ContactRow
+                icon={<MessageSquare size={16} />}
+                title="Chat anytime"
+                body="Multilingual AI assistant, bottom-right of every page"
+              />
+              <ContactRow
+                icon={<Phone size={16} />}
+                title="Call or text"
+                body={DENIS.phone}
+              />
+              <ContactRow
+                icon={<Mail size={16} />}
+                title="Email"
+                body={DENIS.email}
+              />
             </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ContactRow({
+  icon,
+  title,
+  body,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="flex items-center gap-4 p-5 border border-line rounded-2xl bg-cream-50 hover:border-teal/40 transition">
+      <div className="grid h-11 w-11 place-items-center rounded-full bg-teal-50 text-teal-700 border border-teal/20">
+        {icon}
+      </div>
+      <div>
+        <div className="text-[10.5px] uppercase tracking-[0.22em] text-mute">
+          {title}
+        </div>
+        <div className="text-[15px] font-medium text-navy mt-0.5">{body}</div>
+      </div>
+    </div>
   );
 }

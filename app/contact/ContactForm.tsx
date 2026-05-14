@@ -74,7 +74,7 @@ export default function ContactForm({
           <select
             name="intent"
             defaultValue={initialIntent || "buy"}
-            className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm focus:outline-none focus:border-teal"
+            className="w-full rounded-xl border border-line bg-cream-50 px-4 py-3 text-sm focus:outline-none focus:border-teal"
           >
             {INTENTS.map((i) => (
               <option key={i.value} value={i.value}>
@@ -96,7 +96,7 @@ export default function ContactForm({
           rows={5}
           required
           placeholder="Tell Denis what you're looking for, your timeline, or any questions..."
-          className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm focus:outline-none focus:border-teal"
+          className="w-full rounded-xl border border-line bg-cream-50 px-4 py-3 text-sm focus:outline-none focus:border-teal"
         />
       </div>
       {error && (
@@ -148,7 +148,7 @@ function Field({
         name={name}
         required={required}
         defaultValue={defaultValue}
-        className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm focus:outline-none focus:border-teal"
+        className="w-full rounded-xl border border-line bg-cream-50 px-4 py-3 text-sm focus:outline-none focus:border-teal"
       />
     </div>
   );

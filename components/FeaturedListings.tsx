@@ -9,29 +9,35 @@ export default async function FeaturedListings() {
   const listings = await fetchListings({ limit: 6 });
 
   return (
-    <section id="listings" className="bg-white">
-      <div className="container-x py-20 lg:py-28">
-        <div className="flex items-end justify-between gap-6 mb-10">
+    <section id="listings" className="bg-cream-50">
+      <div className="container-x py-24 lg:py-32">
+        <div className="flex items-end justify-between gap-6 mb-12">
           <div>
-            <div className="h-eyebrow">Active Inventory</div>
-            <h2 className="h-section mt-2 max-w-2xl">Featured Listings</h2>
-            <p className="lede mt-3 max-w-xl">
+            <div className="flex items-center gap-3">
+              <div className="h-px w-10 bg-teal" />
+              <div className="h-eyebrow">Active Inventory</div>
+            </div>
+            <h2 className="h-section mt-4 max-w-2xl">
+              Featured{" "}
+              <span className="italic-emph text-teal-600">Listings</span>
+            </h2>
+            <p className="lede mt-4 max-w-xl">
               A curated look at Denis's current and recent inventory across the
               western suburbs.
             </p>
           </div>
           <Link
             href="/listings"
-            className="hidden md:inline-flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-teal"
+            className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-navy hover:text-teal-600 border-b border-teal/40 pb-0.5"
           >
-            View all <ArrowRight size={14} />
+            View all listings <ArrowRight size={14} />
           </Link>
         </div>
 
         {listings.length === 0 ? (
           <div className="card p-10 text-center">
             <div className="text-mute text-sm">
-              New listings hitting the market soon — call {`(630) 870-1800`} for
+              New listings hitting the market soon. Call {`(630) 870-1800`} for
               off-market opportunities.
             </div>
           </div>

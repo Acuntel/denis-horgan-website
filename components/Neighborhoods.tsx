@@ -4,15 +4,22 @@ import { NEIGHBORHOODS } from "@/lib/denis-data";
 
 export default function Neighborhoods() {
   return (
-    <section id="neighborhoods" className="bg-sand">
-      <div className="container-x py-20 lg:py-28">
-        <div className="max-w-2xl mb-12">
-          <div className="h-eyebrow">Where Denis Works</div>
-          <h2 className="h-section mt-2">
+    <section
+      id="neighborhoods"
+      className="relative bg-cream-200 border-y border-line/60"
+    >
+      <div className="grain absolute inset-0 pointer-events-none" />
+      <div className="relative container-x py-24 lg:py-32">
+        <div className="max-w-2xl mb-14">
+          <div className="flex items-center gap-3">
+            <div className="h-px w-10 bg-teal" />
+            <div className="h-eyebrow">Where Denis Works</div>
+          </div>
+          <h2 className="h-section mt-4">
             Featured{" "}
-            <span className="italic-emph text-teal">Neighborhoods</span>
+            <span className="italic-emph text-teal-600">Neighborhoods</span>
           </h2>
-          <p className="lede mt-3">
+          <p className="lede mt-4">
             Denis has closed transactions in every corner of the western
             suburbs. Here are the markets he knows house-by-house.
           </p>
@@ -23,24 +30,26 @@ export default function Neighborhoods() {
             <Link
               key={n.slug}
               href={`/listings?neighborhood=${n.slug}`}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/5] block"
+              className="group relative overflow-hidden rounded-2xl aspect-[4/5] block shadow-card hover:shadow-cardHover transition"
             >
               <Image
                 src={n.image}
                 alt={n.name}
                 fill
                 sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                className="object-cover group-hover:scale-[1.05] transition duration-700"
+                className="object-cover group-hover:scale-[1.06] transition duration-[1000ms]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/30 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
-                <div className="text-white text-xl font-semibold tracking-tightish">
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/40 to-transparent" />
+              <div className="absolute inset-0 border-[6px] border-cream-50/0 group-hover:border-cream-50/20 transition" />
+              <div className="absolute inset-x-0 bottom-0 p-7">
+                <div className="text-cream-50 text-2xl font-serif tracking-tighter2">
                   {n.name}
                 </div>
-                <p className="mt-2 text-white/85 text-sm leading-relaxed line-clamp-3">
+                <div className="mt-1 h-px w-10 bg-teal-400" />
+                <p className="mt-3 text-cream-50/85 text-[13.5px] leading-relaxed line-clamp-3 font-light">
                   {n.blurb}
                 </p>
-                <div className="mt-3 text-[11px] text-teal-400 font-semibold uppercase tracking-wider">
+                <div className="mt-4 text-[10px] text-teal-400 font-medium uppercase tracking-[0.22em]">
                   View homes →
                 </div>
               </div>

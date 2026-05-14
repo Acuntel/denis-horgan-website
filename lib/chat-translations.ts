@@ -9,7 +9,7 @@ export const CHAT_LOCALES: { code: ChatLocale; label: string; flag: string }[] =
   ];
 
 export const LANGUAGE_INSTRUCTION: Record<ChatLocale, string> = {
-  auto: "Detect the user's language from their first message and respond in that same language for the rest of the conversation. Support any language (English, Spanish, Polish, Mandarin, Hindi, Tagalog, Korean, Russian, Ukrainian, Arabic — anything). If unsure, default to English.",
+  auto: "Detect the user's language from their first message and respond in that same language for the rest of the conversation. Support any language (English, Spanish, Polish, Mandarin, Hindi, Tagalog, Korean, Russian, Ukrainian, Arabic, anything). If unsure, default to English.",
   en: "Respond in English regardless of the language the user writes in.",
   es: "Responde siempre en español, incluso si el usuario escribe en otro idioma.",
   pl: "Odpowiadaj zawsze po polsku, nawet jeśli użytkownik pisze w innym języku.",
@@ -56,7 +56,7 @@ export const STR: Record<ChatLocale, Strings> = {
     emailRequired: "Email is required",
     emailInvalid: "Enter a valid email",
     greeting: (n, intent) =>
-      `Hi ${n} — I'm Denis Horgan's virtual assistant. ${
+      `Hi ${n}, I'm Denis Horgan's virtual assistant. ${
         intent ? `I see you're interested in ${intent.toLowerCase()}. ` : ""
       }How can I help today?`,
     inputPlaceholder: "Type a message...",
@@ -83,7 +83,7 @@ export const STR: Record<ChatLocale, Strings> = {
     emailRequired: "Email is required",
     emailInvalid: "Enter a valid email",
     greeting: (n, intent) =>
-      `Hi ${n} — I'm Denis Horgan's virtual assistant. ${
+      `Hi ${n}, I'm Denis Horgan's virtual assistant. ${
         intent ? `I see you're interested in ${intent.toLowerCase()}. ` : ""
       }How can I help today?`,
     inputPlaceholder: "Type a message...",

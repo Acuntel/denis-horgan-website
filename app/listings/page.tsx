@@ -12,7 +12,7 @@ export const metadata = {
 export default async function ListingsPage() {
   const listings = await fetchListings({});
   return (
-    <div className="bg-sand">
+    <div className="bg-cream-100">
       <div className="container-x pt-14 pb-8 lg:pt-20">
         <div className="h-eyebrow">Active Inventory</div>
         <h1 className="h-display mt-2">
@@ -20,7 +20,7 @@ export default async function ListingsPage() {
         </h1>
         <p className="lede mt-3 max-w-2xl">
           Filter by status, price, or beds. New listings are added the moment
-          they hit the market — check back often, or call {`(630) 870-1800`} for
+          they hit the market. Check back often, or call {`(630) 870-1800`} for
           off-market opportunities.
         </p>
       </div>

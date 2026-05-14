@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 export const metadata = {
   title: "Contact Denis Horgan",
   description:
-    "Reach Denis directly — he responds to every inquiry personally, usually within the hour.",
+    "Reach Denis directly. He responds to every inquiry personally, usually within the hour.",
 };
 
 export default function ContactPage({
@@ -14,7 +14,7 @@ export default function ContactPage({
   searchParams?: { intent?: string; address?: string };
 }) {
   return (
-    <section className="bg-sand">
+    <section className="bg-cream-100">
       <div className="container-x py-16 lg:py-24 grid gap-12 lg:grid-cols-[1fr_1.2fr]">
         <div>
           <div className="h-eyebrow">Get in touch</div>
@@ -23,12 +23,12 @@ export default function ContactPage({
           </h1>
           <p className="lede mt-4 max-w-md">
             Buying, selling, refinancing, or just exploring? Send Denis a
-            message and he'll personally get back to you — usually within the
+            message and he'll personally get back to you, usually within the
             hour during business hours.
           </p>
           <div className="mt-8 space-y-4 text-sm">
             <a href={DENIS.phoneHref} className="flex items-center gap-3 group">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-teal shadow-card">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-cream-50 text-teal shadow-card">
                 <Phone size={16} />
               </span>
               <span>
@@ -44,7 +44,7 @@ export default function ContactPage({
               href={`mailto:${DENIS.email}`}
               className="flex items-center gap-3 group"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-teal shadow-card">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-cream-50 text-teal shadow-card">
                 <Mail size={16} />
               </span>
               <span>
@@ -57,7 +57,7 @@ export default function ContactPage({
               </span>
             </a>
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-teal shadow-card">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-cream-50 text-teal shadow-card">
                 <MapPin size={16} />
               </span>
               <span>

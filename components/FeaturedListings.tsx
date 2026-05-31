@@ -4,7 +4,9 @@ import { getProperties } from "@/lib/properties";
 import { ArrowRight } from "lucide-react";
 
 export default function FeaturedListings() {
-  const listings = getProperties({ limit: 6 });
+  // Show listings flagged featured in /admin; fall back to newest if none are.
+  const featured = getProperties({ featured: true, limit: 6 });
+  const listings = featured.length ? featured : getProperties({ limit: 6 });
 
   return (
     <section id="listings" className="bg-cream-50">

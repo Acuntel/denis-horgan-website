@@ -12,11 +12,14 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 export default function PropertyCard({ listing }: { listing: Listing }) {
-  const price = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(listing.price);
+  const price =
+    listing.price > 0
+      ? new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: 0,
+        }).format(listing.price)
+      : "Contact for price";
 
   const photo = listing.photos?.[0];
 

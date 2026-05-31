@@ -31,11 +31,14 @@ export function generateMetadata({
 }): Metadata {
   const listing = getPropertyById(params.id);
   if (!listing) return { title: "Listing not found" };
-  const priceStr = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(listing.price);
+  const priceStr =
+    listing.price > 0
+      ? new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: 0,
+        }).format(listing.price)
+      : "Contact for price";
   const specs = [
     listing.beds != null ? `${listing.beds} bed` : null,
     listing.baths != null ? `${listing.baths} bath` : null,
@@ -72,11 +75,14 @@ export default function ListingDetail({ params }: { params: { id: string } }) {
   const listing = getPropertyById(params.id);
   if (!listing) notFound();
 
-  const price = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(listing.price);
+  const price =
+    listing.price > 0
+      ? new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: 0,
+        }).format(listing.price)
+      : "Contact for price";
 
   const photos = listing.photos?.length ? listing.photos : [];
 

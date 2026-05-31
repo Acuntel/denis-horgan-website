@@ -130,14 +130,19 @@ export function realEstateListingSchema(listing: Listing) {
     datePosted: listing.created_at,
     ...(listing.description ? { description: listing.description } : {}),
     ...(listing.photos?.length ? { image: listing.photos } : {}),
-    offers: {
-      "@type": "Offer",
-      price: listing.price,
-      priceCurrency: "USD",
-      availability:
-        STATUS_TO_AVAILABILITY[listing.status] ?? "https://schema.org/InStock",
-      seller: { "@id": AGENT_ID },
-    },
+    ...(listing.price > 0
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: listing.price,
+            priceCurrency: "USD",
+            availability:
+              STATUS_TO_AVAILABILITY[listing.status] ??
+              "https://schema.org/InStock",
+            seller: { "@id": AGENT_ID },
+          },
+        }
+      : {}),
     about: {
       "@type": "SingleFamilyResidence",
       name,

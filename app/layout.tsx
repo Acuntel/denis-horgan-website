@@ -6,6 +6,12 @@ import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import PageLoader from "@/components/PageLoader";
 import { DENIS } from "@/lib/denis-data";
+import {
+  JsonLd,
+  canonical,
+  realEstateAgentSchema,
+  webSiteSchema,
+} from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,6 +35,8 @@ export const metadata: Metadata = {
   },
   description:
     "Denis Horgan, top-producing Redfin Principal Agent serving Downers Grove and the western Chicago suburbs. 359 homes sold. $144M in transactions. 4.9★ from 185 clients.",
+  alternates: { canonical: canonical("/") },
+  robots: { index: true, follow: true },
   keywords: [
     "Denis Horgan",
     "Redfin agent Downers Grove",
@@ -59,6 +67,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body>
+        <JsonLd data={realEstateAgentSchema()} />
+        <JsonLd data={webSiteSchema()} />
         <PageLoader />
         <Nav />
         <main>{children}</main>

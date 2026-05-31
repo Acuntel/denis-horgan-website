@@ -1,0 +1,187 @@
+"use client";
+
+import { useState } from "react";
+import { Plus, Download, LogOut, Check } from "lucide-react";
+import type { Listing, ListingStatus } from "@/lib/denis-data";
+import PropertyRow from "./PropertyRow";
+import { downloadText, downloadFile, slugify } from "@/lib/download";
+
+export default function PropertyEditor({
+  initialListings,
+}: {
+  initialListings: Listing[];
+}) {
+  const [listings, setListings] = useState<Listing[]>(initialListings);
+  // photo path -> File (only for newly uploaded images)
+  const [files, setFiles] = useState<Record<string, File>>({});
+  const [done, setDone] = useState(false);
+
+  const patch = (id: string, p: Partial<Listing>) =>
+    setListings((ls) => ls.map((l) => (l.id === id ? { ...l, ...p } : l)));
+
+  const addProperty = () => {
+    const created = new Date().toISOString();
+    const next: Listing = {
+      id: `p-${Date.now()}`,
+      address: "",
+      city: "",
+      state: "IL",
+      zip: "",
+      price: 0,
+      beds: null,
+      baths: null,
+      sqft: null,
+      status: "For Sale" as ListingStatus,
+      featured: false,
+      description: "",
+      photos: [],
+      redfin_url: null,
+      listing_type: "Listing",
+      mls_number: null,
+      created_at: created,
+    };
+    setListings((ls) => [next, ...ls]);
+    setDone(false);
+  };
+
+  const removeProperty = (id: string) => {
+    if (
+      !confirm("Delete this listing? This can't be undone after you publish.")
+    )
+      return;
+    setListings((ls) => ls.filter((l) => l.id !== id));
+    setDone(false);
+  };
+
+  const move = (id: string, dir: -1 | 1) =>
+    setListings((ls) => {
+      const i = ls.findIndex((l) => l.id === id);
+      const j = i + dir;
+      if (i < 0 || j < 0 || j >= ls.length) return ls;
+      const copy = [...ls];
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+      return copy;
+    });
+
+  const registerFile = (path: string, file: File) =>
+    setFiles((f) => ({ ...f, [path]: file }));
+
+  // Give new listings clean slug IDs (nice URLs + SEO) and guarantee uniqueness.
+  function finalizeIds(rows: Listing[]): Listing[] {
+    const seen = new Set<string>();
+    return rows.map((l) => {
+      let id = l.id;
+      if (id.startsWith("p-") || !id) {
+        id = slugify(l.address, l.city);
+      }
+      let unique = id;
+      let n = 2;
+      while (seen.has(unique)) unique = `${id}-${n++}`;
+      seen.add(unique);
+      return { ...l, id: unique };
+    });
+  }
+
+  const exportAll = () => {
+    const cleaned = finalizeIds(listings).map((l) => ({
+      ...l,
+      address: l.address.trim(),
+      city: l.city.trim(),
+      price: Number(l.price) || 0,
+      zip: l.zip ? String(l.zip).trim() : null,
+      description: l.description?.trim() || null,
+      redfin_url: l.redfin_url?.trim() || null,
+      mls_number: l.mls_number?.trim() || null,
+    }));
+    downloadText("properties.json", JSON.stringify(cleaned, null, 2));
+    // Download any newly uploaded photos so they can be dropped into the repo.
+    Object.entries(files).forEach(([path, file]) => {
+      downloadFile(path.split("/").pop() as string, file);
+    });
+    setDone(true);
+  };
+
+  const logout = () => {
+    sessionStorage.removeItem("dh-admin");
+    location.href = "/";
+  };
+
+  const newFileCount = Object.keys(files).length;
+
+  return (
+    <div className="bg-sand min-h-screen pt-10 pb-24">
+      <div className="container-x">
+        {/* Header */}
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line pb-5">
+          <div>
+            <div className="h-eyebrow">Denis Horgan</div>
+            <h1 className="font-serif text-3xl text-navy mt-1">
+              Manage listings
+            </h1>
+          </div>
+          <div className="flex items-center gap-3">
+            <button onClick={addProperty} className="btn-ghost !py-2.5 !px-4">
+              <Plus size={16} /> Add house
+            </button>
+            <button onClick={exportAll} className="btn-navy !py-2.5 !px-4">
+              <Download size={16} /> Export to publish
+            </button>
+            <button
+              onClick={logout}
+              className="inline-flex items-center gap-2 text-sm text-mute hover:text-navy"
+            >
+              <LogOut size={16} /> Sign out
+            </button>
+          </div>
+        </div>
+
+        {/* Publish instructions */}
+        <div className="mt-6 rounded-2xl border border-teal/30 bg-teal-50/60 p-5 text-[13.5px] text-ink/80 leading-relaxed">
+          <strong className="text-navy">How publishing works:</strong> edit
+          below, then click{" "}
+          <span className="font-medium">Export to publish</span>. Your browser
+          downloads <code className="text-navy">properties.json</code>
+          {newFileCount > 0 && (
+            <>
+              {" "}
+              plus {newFileCount} photo{newFileCount > 1 ? "s" : ""}
+            </>
+          )}
+          . Drop <code className="text-navy">properties.json</code> into{" "}
+          <code className="text-navy">public/data/</code>, any new photos into{" "}
+          <code className="text-navy">public/images/listings/</code>, then push
+          to GitHub — the live site rebuilds automatically with full SEO on
+          every listing.
+          {done && (
+            <div className="mt-3 inline-flex items-center gap-2 text-teal-700 font-medium">
+              <Check size={15} /> Exported. Now move the files in and push.
+            </div>
+          )}
+        </div>
+
+        {/* Listings */}
+        <div className="mt-8 space-y-5">
+          {listings.length === 0 && (
+            <div className="card p-10 text-center text-mute text-sm">
+              No listings yet. Click{" "}
+              <span className="font-medium">Add house</span> to create your
+              first one.
+            </div>
+          )}
+          {listings.map((l, i) => (
+            <PropertyRow
+              key={l.id}
+              listing={l}
+              index={i}
+              total={listings.length}
+              onPatch={(p) => patch(l.id, p)}
+              onRemove={() => removeProperty(l.id)}
+              onMove={(dir) => move(l.id, dir)}
+              onFile={registerFile}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

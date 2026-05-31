@@ -9,12 +9,12 @@
 
 html {
   scroll-behavior: smooth;
-  background: #fcfaf5;
+  background: #ffffff;
 }
 
 body {
-  background: #fcfaf5;
-  color: #1a1815;
+  background: #ffffff;
+  color: #15202e;
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -22,8 +22,8 @@ body {
 }
 
 ::selection {
-  background: #b89968;
-  color: #fcfaf5;
+  background: #02182b;
+  color: #ffffff;
 }
 
 @layer components {
@@ -97,7 +97,7 @@ body {
     text-wrap: balance;
   }
   .gold-underline {
-    background-image: linear-gradient(transparent 90%, #b89968 90%);
+    background-image: linear-gradient(transparent 90%, #02182b 90%);
     background-position: 0 95%;
     background-repeat: no-repeat;
     background-size: 100% 90%;
@@ -111,5 +111,5 @@ body {
   inset: 0;
   pointer-events: none;
   opacity: 0.035;
-  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.05 0 0 0 0.9 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.008 0 0 0 0 0.094 0 0 0 0 0.168 0 0 0 0.9 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
 }

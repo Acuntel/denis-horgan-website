@@ -9,37 +9,39 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Deep forest green: nav, footer, headlines. Reads "library, Brooks Brothers, club."
+        // Midnight navy: nav, footer, headlines, primary CTAs. Lifted from the
+        // brand of Emily Sachs Wong (#1 Illinois agent, eswchicago.com) — #02182b.
         navy: {
-          DEFAULT: "#1F3328",
-          900: "#162420",
-          800: "#1F3328",
-          700: "#2A4636",
-          600: "#355847",
-          500: "#476B58",
+          DEFAULT: "#02182b",
+          900: "#010F1D",
+          800: "#02182b",
+          700: "#0A2A42",
+          600: "#123653",
+          500: "#1D4A6B",
         },
-        // Warm antique brass: accent + CTAs. Reads "estate hardware, signet ring."
+        // Cool slate-blue accent: eyebrows, links, chips, secondary CTAs.
+        // Keeps the palette in ESW's restrained cool-monochrome family.
         teal: {
-          DEFAULT: "#B89968",
-          700: "#8A6E3C",
-          600: "#9C7C3E",
-          500: "#B89968",
-          400: "#C9B284",
-          300: "#D9C9A6",
-          50: "#F4ECDC",
+          DEFAULT: "#3F6184",
+          700: "#2C4A66",
+          600: "#345A7D",
+          500: "#3F6184",
+          400: "#6D89A8",
+          300: "#9FB3C8",
+          50: "#EEF2F7",
         },
-        // Layered creams: warmer as they get darker. The "ivory paper" base.
-        sand: "#F8F4EC",
+        // Crisp whites with a faint cool cast — ESW's gallery-white base.
+        sand: "#F5F6F8",
         cream: {
-          50: "#FCFAF5",
-          100: "#F8F4EC",
-          200: "#F1EBDE",
-          300: "#E5DCC8",
-          400: "#D6C9AE",
+          50: "#FFFFFF",
+          100: "#F7F8FA",
+          200: "#EEF1F4",
+          300: "#E2E7EC",
+          400: "#CDD5DD",
         },
-        ink: "#1A1815",
-        mute: "#6E6A60",
-        line: "#E0D8C7",
+        ink: "#15202E",
+        mute: "#848484",
+        line: "#E2E7EC",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
@@ -52,10 +54,10 @@ const config: Config = {
       },
       maxWidth: { container: "1240px" },
       boxShadow: {
-        card: "0 1px 2px rgba(31,51,40,0.04), 0 8px 24px rgba(31,51,40,0.07)",
+        card: "0 1px 2px rgba(2,24,43,0.05), 0 8px 24px rgba(2,24,43,0.08)",
         cardHover:
-          "0 2px 4px rgba(31,51,40,0.06), 0 18px 48px rgba(31,51,40,0.14)",
-        soft: "0 1px 0 rgba(31,51,40,0.04)",
+          "0 2px 4px rgba(2,24,43,0.07), 0 18px 48px rgba(2,24,43,0.16)",
+        soft: "0 1px 0 rgba(2,24,43,0.05)",
       },
       keyframes: {
         fadeUp: {

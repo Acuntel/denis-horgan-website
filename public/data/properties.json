@@ -1,0 +1,44 @@
+[
+  {
+    "id": "836-lyford-lane-wheaton",
+    "address": "836 Lyford Lane",
+    "city": "Wheaton",
+    "state": "IL",
+    "zip": "60189",
+    "price": 335000,
+    "beds": 2,
+    "baths": 1,
+    "sqft": 1050,
+    "status": "Pending",
+    "featured": true,
+    "description": "Beautifully updated 2-bed, 1-bath in a quiet Wheaton neighborhood. Walk to Metra, downtown Wheaton, and top-rated District 200 schools.",
+    "photos": [
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=85"
+    ],
+    "redfin_url": "https://www.redfin.com/real-estate-agents/denis-horgan",
+    "listing_type": "Listing",
+    "mls_number": null,
+    "created_at": "2026-05-01T00:00:00.000Z"
+  },
+  {
+    "id": "9815-lawrence-court-schiller-park",
+    "address": "9815 Lawrence Court, Unit 3AF",
+    "city": "Schiller Park",
+    "state": "IL",
+    "zip": "60176",
+    "price": 275000,
+    "beds": 3,
+    "baths": 2.5,
+    "sqft": 2200,
+    "status": "Pending",
+    "featured": true,
+    "description": "Spacious 3-bed townhome with attached garage, finished basement, and easy access to O'Hare. 3D walkthrough available. Ask for the tour link.",
+    "photos": [
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&q=85"
+    ],
+    "redfin_url": "https://www.redfin.com/real-estate-agents/denis-horgan",
+    "listing_type": "Listing",
+    "mls_number": null,
+    "created_at": "2026-05-01T00:00:00.000Z"
+  }
+]

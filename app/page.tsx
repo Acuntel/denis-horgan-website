@@ -5,10 +5,13 @@ import Neighborhoods from "@/components/Neighborhoods";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
+import { JsonLd, faqPageSchema } from "@/lib/seo";
+import { FAQS } from "@/lib/denis-data";
 
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={faqPageSchema(FAQS)} />
       <Hero />
       <Stats />
       <FeaturedListings />

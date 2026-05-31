@@ -1,16 +1,24 @@
-import { fetchListings } from "@/lib/supabase";
+import type { Metadata } from "next";
+import { getProperties } from "@/lib/properties";
 import ListingsClient from "./ListingsClient";
+import { canonical } from "@/lib/seo";
 
-export const revalidate = 60;
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "Active Listings",
   description:
-    "Browse Denis Horgan's current listings across the western Chicago suburbs.",
+    "Browse Denis Horgan's current listings across the western Chicago suburbs — Downers Grove, Naperville, Wheaton, Glen Ellyn and more.",
+  alternates: { canonical: canonical("/listings") },
+  openGraph: {
+    title: "Active Listings | Denis Horgan",
+    description:
+      "Current homes for sale across the western Chicago suburbs, listed by top-producing Redfin agent Denis Horgan.",
+    url: canonical("/listings"),
+    type: "website",
+  },
 };
 
-export default async function ListingsPage() {
-  const listings = await fetchListings({});
+export default function ListingsPage() {
+  const listings = getProperties({});
   return (
     <div className="bg-cream-100">
       <div className="container-x pt-14 pb-8 lg:pt-20">

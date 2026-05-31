@@ -20,7 +20,28 @@ export const DENIS = {
   licenseState: "Illinois",
   licenseTitle: "Managing Broker",
   office: "Redfin Corporation, 112 S. Sangamon St. #400, Chicago, IL 60607",
+  brokerage: "Redfin Corporation",
 };
+
+// Structured NAP + geo for schema.org / local SEO. Office is the Redfin Chicago
+// branch; geo points at the heart of the western-suburbs service area.
+export const OFFICE_ADDRESS = {
+  streetAddress: "112 S. Sangamon St. #400",
+  addressLocality: "Chicago",
+  addressRegion: "IL",
+  postalCode: "60607",
+  addressCountry: "US",
+};
+
+export const SERVICE_GEO = {
+  // Downers Grove, IL — center of Denis's market
+  latitude: 41.8089,
+  longitude: -88.0112,
+  // ~30 mi radius covers DuPage + western Cook + northern Will
+  radiusMeters: 48000,
+};
+
+export const RATING = { value: "4.9", count: 185 };
 
 export const STATS = [
   { value: "359+", label: "Homes Sold" },
@@ -115,6 +136,175 @@ export const NEIGHBORHOODS = [
       "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=80",
   },
 ];
+
+// Richer content for the /neighborhoods/[slug] local-SEO landing pages.
+// Keyed by the same slug used in NEIGHBORHOODS above.
+export type NeighborhoodContent = {
+  county: string;
+  intro: string;
+  highlights: string[];
+  faqs: { q: string; a: string }[];
+};
+
+export const NEIGHBORHOOD_CONTENT: Record<string, NeighborhoodContent> = {
+  "downers-grove": {
+    county: "DuPage County",
+    intro:
+      "Downers Grove is Denis Horgan's home market and where he's closed the most deals. From the historic homes near the downtown Metra station to newer construction on the south side, Denis knows these streets house-by-house. Whether you're buying your first place or selling a family home, you get an agent who actually lives and works this market every day.",
+    highlights: [
+      "BNSF Metra line — roughly a 35-minute express ride to Chicago Union Station",
+      "Highly rated District 58 (elementary) and District 99 (high school)",
+      "Walkable downtown with restaurants, the Tivoli Theatre, and a weekly farmers market",
+      "Mix of vintage character homes, mid-century ranches, and new builds",
+    ],
+    faqs: [
+      {
+        q: "What's the housing market like in Downers Grove right now?",
+        a: "Downers Grove stays competitive thanks to its schools and Metra access. Well-priced, move-in-ready homes still draw multiple offers. Denis will run a full comparative market analysis so you're pricing or offering based on real numbers, not guesswork.",
+      },
+      {
+        q: "How far is Downers Grove from downtown Chicago?",
+        a: "About 22 miles. The BNSF Metra express gets you to Union Station in roughly 35 minutes, which is a big reason demand here holds up.",
+      },
+    ],
+  },
+  naperville: {
+    county: "DuPage & Will County",
+    intro:
+      "Naperville is consistently ranked among the best places to live in the country, and for good reason — top-tier schools, the Riverwalk, and a downtown that rivals the suburbs around it. Denis helps buyers compete in Naperville's fast-moving market and helps sellers position homes to stand out, from craftsman cottages near downtown to estates on the west side.",
+    highlights: [
+      "Nationally ranked District 203 and District 204 schools",
+      "The Naperville Riverwalk and a vibrant, walkable downtown",
+      "Strong resale demand across a wide range of price points",
+      "Easy access to I-88 and two Metra stations",
+    ],
+    faqs: [
+      {
+        q: "Why is Naperville real estate so competitive?",
+        a: "Schools and lifestyle. Families move here for the districts and the downtown, which keeps demand high and inventory tight. Getting pre-approved and moving quickly with a sharp offer matters — Denis will make sure you're ready before the right home hits.",
+      },
+    ],
+  },
+  wheaton: {
+    county: "DuPage County",
+    intro:
+      "Wheaton blends historic charm with strong schools and a genuinely walkable downtown. Denis currently has active inventory here and has guided plenty of buyers and sellers through this market. From the tree-lined streets near the college to newer subdivisions, he knows where the value is.",
+    highlights: [
+      "Top-rated District 200 schools",
+      "Historic downtown Wheaton with Metra access on the UP-West line",
+      "Wheaton College and abundant parks and forest preserves",
+      "A range of housing from vintage homes to newer construction",
+    ],
+    faqs: [
+      {
+        q: "Does Denis have listings in Wheaton?",
+        a: "Yes — Wheaton is an active market for Denis. Check the Listings page for current inventory, or call (630) 870-1800 and he'll tell you what's coming on the market before it's public.",
+      },
+    ],
+  },
+  "glen-ellyn": {
+    county: "DuPage County",
+    intro:
+      "Glen Ellyn offers lake-side living minutes from a vibrant Main Street. Denis has helped repeat clients buy and sell here for years and understands what drives value in this market — proximity to Lake Ellyn, the downtown, and the strong school district.",
+    highlights: [
+      "Lake Ellyn Park and a charming, walkable downtown",
+      "Well-regarded District 41 and District 87 schools",
+      "UP-West Metra line into the city",
+      "Established neighborhoods with mature trees and character homes",
+    ],
+    faqs: [
+      {
+        q: "Is Glen Ellyn a good place to buy a home?",
+        a: "It's one of the most desirable western suburbs — great schools, a walkable downtown, and Metra access. Inventory can be tight, so working with an agent who knows the market like Denis gives you an edge.",
+      },
+    ],
+  },
+  lombard: {
+    county: "DuPage County",
+    intro:
+      "Known as the Lilac Village, Lombard offers real value, a central location, and Yorktown Center at your doorstep. It's a favorite for first-time buyers, and Denis is great at helping people get their footing in this market without overpaying.",
+    highlights: [
+      "Strong value relative to neighboring suburbs",
+      "Yorktown Center shopping and dining",
+      "UP-West Metra access and quick I-355 / I-88 connections",
+      "Annual Lilac Festival and Lilacia Park",
+    ],
+    faqs: [
+      {
+        q: "Is Lombard good for first-time buyers?",
+        a: "Absolutely. Lombard tends to offer more home for the money than some neighboring towns while keeping great access to transit and shopping. Denis works with a lot of first-time buyers and will walk you through the whole process.",
+      },
+    ],
+  },
+  westmont: {
+    county: "DuPage County",
+    intro:
+      "Westmont features approachable price points, a walkable downtown, and an underrated dining scene. It's a consistent seller's market, and Denis helps both sellers maximize their sale and buyers find value here.",
+    highlights: [
+      "Approachable pricing for the western suburbs",
+      "Walkable downtown with a strong local dining scene",
+      "BNSF Metra line into Chicago",
+      "Cream of the Crop Days and a tight-knit community feel",
+    ],
+    faqs: [
+      {
+        q: "What kind of market is Westmont?",
+        a: "Westmont has been a steady seller's market, with solid demand at approachable price points. If you're selling, Denis will help you capitalize on that; if you're buying, he'll help you move decisively.",
+      },
+    ],
+  },
+  darien: {
+    county: "DuPage County",
+    intro:
+      "Darien offers quiet streets and access to the Hinsdale South school district. Denis has guided sellers to multiple over-ask closings here and knows how to price and position homes in this market.",
+    highlights: [
+      "Hinsdale South High School (District 86)",
+      "Quiet, established residential neighborhoods",
+      "Easy I-55 and I-355 access",
+      "Parks, trails, and the Darien Swim & Racquet Club",
+    ],
+    faqs: [
+      {
+        q: "Can Denis help me sell my Darien home for top dollar?",
+        a: "That's his specialty — Denis has taken Darien sellers to multiple over-ask closings. He'll do a room-by-room walkthrough and tell you exactly what's worth updating before listing.",
+      },
+    ],
+  },
+  "clarendon-hills": {
+    county: "DuPage County",
+    intro:
+      "Clarendon Hills is one of the area's most charming small towns — tight inventory, beautiful trees, and a walkable downtown. It's a true negotiation market, and having Denis on your side makes a real difference here.",
+    highlights: [
+      "Charming, walkable downtown and Prospect Park",
+      "BNSF Metra line into the city",
+      "Highly sought-after, low-inventory market",
+      "Access to Hinsdale-area schools",
+    ],
+    faqs: [
+      {
+        q: "Why is inventory so tight in Clarendon Hills?",
+        a: "It's a small, highly desirable town, so homes don't come up often and they move fast. Denis keeps a pulse on what's coming and can often get you in early — call (630) 870-1800.",
+      },
+    ],
+  },
+  lisle: {
+    county: "DuPage County",
+    intro:
+      "Lisle, the Arboretum Village, offers green space, top-rated schools, and access to I-88 and Metra. Repeat business is the norm for Denis here — clients come back because he knows the market and delivers.",
+    highlights: [
+      "The Morton Arboretum and abundant green space",
+      "Well-regarded District 202 schools",
+      "BNSF Metra line and I-88 access",
+      "A mix of single-family homes and townhomes",
+    ],
+    faqs: [
+      {
+        q: "What makes Lisle appealing to buyers?",
+        a: "Green space, good schools, and an easy commute. The Morton Arboretum and parks give it a distinct feel, and the Metra/I-88 access makes it practical. Denis has a lot of repeat clients in Lisle for those reasons.",
+      },
+    ],
+  },
+};
 
 export const ALL_AREAS_SERVED = [
   "Downers Grove",
@@ -238,52 +428,8 @@ export const FAQS = [
   },
 ];
 
-export const SEED_LISTINGS = [
-  {
-    id: "seed-1",
-    address: "836 Lyford Lane",
-    city: "Wheaton",
-    state: "IL",
-    zip: "60189",
-    price: 335000,
-    beds: 2,
-    baths: 1,
-    sqft: 1050,
-    status: "Pending" as const,
-    featured: true,
-    description:
-      "Beautifully updated 2-bed, 1-bath in a quiet Wheaton neighborhood. Walk to Metra, downtown Wheaton, and top-rated District 200 schools.",
-    photos: [
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&q=85",
-    ],
-    redfin_url: "https://www.redfin.com/real-estate-agents/denis-horgan",
-    listing_type: "Listing",
-    mls_number: null,
-    created_at: new Date().toISOString(),
-  },
-  {
-    id: "seed-2",
-    address: "9815 Lawrence Court, Unit 3AF",
-    city: "Schiller Park",
-    state: "IL",
-    zip: "60176",
-    price: 275000,
-    beds: 3,
-    baths: 2.5,
-    sqft: 2200,
-    status: "Pending" as const,
-    featured: true,
-    description:
-      "Spacious 3-bed townhome with attached garage, finished basement, and easy access to O'Hare. 3D walkthrough available. Ask for the tour link.",
-    photos: [
-      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&q=85",
-    ],
-    redfin_url: "https://www.redfin.com/real-estate-agents/denis-horgan",
-    listing_type: "Listing",
-    mls_number: null,
-    created_at: new Date().toISOString(),
-  },
-];
+// Listings live in public/data/properties.json and are managed from /admin.
+// See lib/properties.ts for the read helpers.
 
 export type ListingStatus =
   | "For Sale"

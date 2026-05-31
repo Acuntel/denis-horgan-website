@@ -11,36 +11,21 @@ ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 RESEND_API_KEY=re_...
 # Address Denis receives leads at:
 LEAD_TO_EMAIL=denis.horgan@redfin.com
-# Verified Resend sender (must be a domain Brady verified in Resend):
+# Verified Resend sender (must be a domain verified in Resend):
 LEAD_FROM_EMAIL=Denis Horgan Website <noreply@denishorgan.com>
-
-# --- Supabase (properties + photos) ---
-NEXT_PUBLIC_SUPABASE_URL=https://YOUR-PROJECT.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
-# Service role key — server-only, never expose. Used for admin writes.
-SUPABASE_SERVICE_ROLE_KEY=eyJ...
-
-# --- Admin panel ---
-# Password Denis uses to log into /admin
-ADMIN_PASSWORD=change-me-to-something-strong
-# Random 64-char hex string. Generate with:
-#   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-ADMIN_COOKIE_SECRET=replace-with-32-byte-hex-secret
 
 # --- Site ---
 NEXT_PUBLIC_SITE_URL=https://denishorgan.com
 ```
 
+## Notes
+
+- **No database.** Listings live in `public/data/properties.json` and are edited from `/admin` (password `1111`, set in `app/admin/page.tsx`). There is no Supabase, no admin server password, and no service keys to manage.
+- **Publishing listings:** in `/admin`, edit and click **Export to publish**. Drop the downloaded `properties.json` into `public/data/`, any new photos into `public/images/listings/`, and push to GitHub. Vercel rebuilds and every listing gets its own SEO-optimized page + sitemap entry automatically.
+- Only `ANTHROPIC_*` and `RESEND_*` are needed for the chatbot and contact-form emails. `NEXT_PUBLIC_SITE_URL` should be set so canonical URLs, the sitemap, and robots.txt point at the live domain.
+
 ## One-time setup checklist
 
-1. **Supabase project** (~5 min):
-   - Go to supabase.com → New project → name it `denis-horgan-site`
-   - Open SQL Editor → paste contents of `supabase-schema.sql` → Run
-   - Project Settings → API → copy URL + anon key + service role key into env vars
-   - Storage → create public bucket `property-photos`
-
-2. **Resend** (~2 min): create API key at resend.com/api-keys. To send from a custom address (`noreply@denishorgan.com`), verify a domain in Resend → Domains. Until then, you can use `onboarding@resend.dev` as `LEAD_FROM_EMAIL` (Resend's sandbox sender).
-
-3. **Anthropic key**: reuse Brady's existing key or create a new one for this project at console.anthropic.com.
-
-4. **Vercel**: paste all env vars under Project → Settings → Environment Variables.
+1. **Anthropic key**: reuse Brady's existing key or create one at console.anthropic.com.
+2. **Resend** (~2 min): create an API key at resend.com/api-keys. To send from `noreply@denishorgan.com`, verify the domain in Resend → Domains. Until then use `onboarding@resend.dev` as `LEAD_FROM_EMAIL`.
+3. **Vercel**: paste the env vars above under Project → Settings → Environment Variables (set `NEXT_PUBLIC_SITE_URL` to the production domain).

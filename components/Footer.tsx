@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { DENIS, ALL_AREAS_SERVED } from "@/lib/denis-data";
+import { DENIS, ALL_AREAS_SERVED, NEIGHBORHOODS } from "@/lib/denis-data";
 
 export default function Footer() {
   return (
@@ -92,9 +92,23 @@ export default function Footer() {
             Areas Served
           </div>
           <ul className="mt-5 grid grid-cols-2 gap-x-3 gap-y-2 text-[12.5px] text-cream-50/75 font-light">
-            {ALL_AREAS_SERVED.slice(0, 18).map((a) => (
-              <li key={a}>{a}</li>
+            {NEIGHBORHOODS.map((n) => (
+              <li key={n.slug}>
+                <Link
+                  href={`/neighborhoods/${n.slug}`}
+                  className="hover:text-teal-400 transition"
+                >
+                  {n.name}
+                </Link>
+              </li>
             ))}
+            {ALL_AREAS_SERVED.filter(
+              (a) => !NEIGHBORHOODS.some((n) => n.name === a),
+            )
+              .slice(0, 9)
+              .map((a) => (
+                <li key={a}>{a}</li>
+              ))}
           </ul>
         </div>
       </div>
@@ -108,8 +122,16 @@ export default function Footer() {
             <span className="text-cream-50/30">·</span>©{" "}
             {new Date().getFullYear()} {DENIS.name}. Equal Housing Opportunity.
           </div>
-          <div className="uppercase tracking-[0.16em]">
-            Brokered by Redfin Corporation
+          <div className="flex items-center gap-4">
+            <span className="uppercase tracking-[0.16em]">
+              Brokered by Redfin Corporation
+            </span>
+            <Link
+              href="/admin"
+              className="text-cream-50/35 hover:text-teal-400 transition"
+            >
+              Admin
+            </Link>
           </div>
         </div>
       </div>

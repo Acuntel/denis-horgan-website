@@ -29,7 +29,7 @@ export default function Neighborhoods() {
           {NEIGHBORHOODS.map((n) => (
             <Link
               key={n.slug}
-              href={`/listings?neighborhood=${n.slug}`}
+              href={`/neighborhoods/${n.slug}`}
               className="group relative overflow-hidden rounded-2xl aspect-[4/5] block shadow-card hover:shadow-cardHover transition"
             >
               <Image

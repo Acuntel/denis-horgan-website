@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { fetchListingById } from "@/lib/supabase";
+import { getPropertyById, getAllPropertyIds } from "@/lib/properties";
 import { DENIS } from "@/lib/denis-data";
+import {
+  JsonLd,
+  canonical,
+  realEstateListingSchema,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import {
   BedDouble,
   Bath,
@@ -13,23 +20,56 @@ import {
   ArrowLeft,
 } from "lucide-react";
 
-export const revalidate = 60;
-
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  const listing = await fetchListingById(params.id);
-  if (!listing) return { title: "Listing not found" };
-  return {
-    title: `${listing.address}, ${listing.city}`,
-    description: listing.description ?? undefined,
-  };
+export function generateStaticParams() {
+  return getAllPropertyIds().map((id) => ({ id }));
 }
 
-export default async function ListingDetail({
+export function generateMetadata({
   params,
 }: {
   params: { id: string };
-}) {
-  const listing = await fetchListingById(params.id);
+}): Metadata {
+  const listing = getPropertyById(params.id);
+  if (!listing) return { title: "Listing not found" };
+  const priceStr = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(listing.price);
+  const specs = [
+    listing.beds != null ? `${listing.beds} bed` : null,
+    listing.baths != null ? `${listing.baths} bath` : null,
+    listing.sqft != null ? `${listing.sqft.toLocaleString()} sqft` : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const title = `${listing.address}, ${listing.city} ${listing.state}`;
+  const description =
+    listing.description ??
+    `${priceStr}${specs ? ` — ${specs}` : ""} in ${listing.city}, ${listing.state}. Listed by Denis Horgan, Redfin agent. Request a tour today.`;
+  const url = canonical(`/listings/${listing.id}`);
+  return {
+    title: `${title} — ${priceStr}`,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${title} — ${priceStr}`,
+      description,
+      url,
+      type: "website",
+      images: listing.photos?.length ? listing.photos : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} — ${priceStr}`,
+      description,
+      images: listing.photos?.length ? [listing.photos[0]] : undefined,
+    },
+  };
+}
+
+export default function ListingDetail({ params }: { params: { id: string } }) {
+  const listing = getPropertyById(params.id);
   if (!listing) notFound();
 
   const price = new Intl.NumberFormat("en-US", {
@@ -42,6 +82,17 @@ export default async function ListingDetail({
 
   return (
     <article className="bg-cream-50">
+      <JsonLd data={realEstateListingSchema(listing)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Listings", path: "/listings" },
+          {
+            name: `${listing.address}, ${listing.city}`,
+            path: `/listings/${listing.id}`,
+          },
+        ])}
+      />
       <div className="container-x pt-8">
         <Link
           href="/listings"

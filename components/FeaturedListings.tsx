@@ -1,12 +1,10 @@
 import Link from "next/link";
 import PropertyCard from "./PropertyCard";
-import { fetchListings } from "@/lib/supabase";
+import { getProperties } from "@/lib/properties";
 import { ArrowRight } from "lucide-react";
 
-export const revalidate = 60;
-
-export default async function FeaturedListings() {
-  const listings = await fetchListings({ limit: 6 });
+export default function FeaturedListings() {
+  const listings = getProperties({ limit: 6 });
 
   return (
     <section id="listings" className="bg-cream-50">

@@ -33,9 +33,9 @@ export default function PageLoader() {
         >
           <defs>
             <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#9C7C3E" />
-              <stop offset="55%" stopColor="#B89968" />
-              <stop offset="100%" stopColor="#D9C9A6" />
+              <stop offset="0%" stopColor="#02182b" />
+              <stop offset="55%" stopColor="#3F6184" />
+              <stop offset="100%" stopColor="#9FB3C8" />
             </linearGradient>
           </defs>
           <circle
@@ -64,7 +64,7 @@ export default function PageLoader() {
             fontSize="44"
             fontStyle="italic"
             fontWeight="500"
-            fill="#1F3328"
+            fill="#02182b"
           >
             DH
           </text>

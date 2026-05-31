@@ -69,7 +69,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "Denis's home market, with 48 closed deals and counting. Tree-lined streets, top schools, and an easy Metra ride to the Loop.",
     image:
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80",
+      "/images/neighborhoods/downers-grove.jpg",
   },
   {
     slug: "naperville",
@@ -77,7 +77,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "One of the most sought-after suburbs in the country. World-class schools, the Riverwalk, and homes from craftsman cottages to estates.",
     image:
-      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200&q=80",
+      "/images/neighborhoods/naperville.jpg",
   },
   {
     slug: "wheaton",
@@ -85,7 +85,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "Historic charm, strong schools, and walkable downtown. Denis currently has active inventory here.",
     image:
-      "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=1200&q=80",
+      "/images/neighborhoods/wheaton.jpg",
   },
   {
     slug: "glen-ellyn",
@@ -93,7 +93,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "Lake-side living minutes from a vibrant Main Street. Denis has helped repeat clients buy and sell here for years.",
     image:
-      "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1200&q=80",
+      "/images/neighborhoods/glen-ellyn.jpg",
   },
   {
     slug: "lombard",
@@ -101,7 +101,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "The Lilac Village. Value, location, and Yorktown Center at your doorstep. A favorite for first-time buyers.",
     image:
-      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=1200&q=80",
+      "/images/neighborhoods/lombard.jpg",
   },
   {
     slug: "westmont",
@@ -109,7 +109,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "Approachable price points, a walkable downtown, and an underrated dining scene. A consistent seller's market.",
     image:
-      "https://images.unsplash.com/photo-1592595896616-c37162298647?w=1200&q=80",
+      "/images/neighborhoods/westmont.jpg",
   },
   {
     slug: "darien",
@@ -117,7 +117,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "Quiet streets and Hinsdale South schools. Denis has guided sellers to multiple over-ask closings here.",
     image:
-      "https://images.unsplash.com/photo-1448630360428-65456885c650?w=1200&q=80",
+      "/images/neighborhoods/darien.jpg",
   },
   {
     slug: "clarendon-hills",
@@ -125,7 +125,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "Tight inventory, beautiful trees, and one of the area's most charming downtowns. A true buyer's negotiation market.",
     image:
-      "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=1200&q=80",
+      "/images/neighborhoods/clarendon-hills.jpg",
   },
   {
     slug: "lisle",
@@ -133,7 +133,7 @@ export const NEIGHBORHOODS = [
     blurb:
       "The Arboretum Village. Green space, top-rated schools, and access to I-88 and Metra. Repeat business is the norm.",
     image:
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=80",
+      "/images/neighborhoods/lisle.jpg",
   },
 ];
 

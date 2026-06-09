@@ -30,7 +30,7 @@ export default function FeaturedListings() {
             href="/listings"
             className="hidden md:inline-flex items-center gap-1.5 text-sm font-medium text-navy hover:text-teal-600 border-b border-teal/40 pb-0.5"
           >
-            View all listings <ArrowRight size={14} />
+            View my listings <ArrowRight size={14} />
           </Link>
         </div>
 
@@ -51,7 +51,7 @@ export default function FeaturedListings() {
 
         <div className="mt-10 text-center md:hidden">
           <Link href="/listings" className="btn-ghost">
-            View all listings <ArrowRight size={14} />
+            View my listings <ArrowRight size={14} />
           </Link>
         </div>
       </div>

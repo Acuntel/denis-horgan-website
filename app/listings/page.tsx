@@ -24,7 +24,7 @@ export default function ListingsPage() {
       <div className="container-x pt-14 pb-8 lg:pt-20">
         <div className="h-eyebrow">Active Inventory</div>
         <h1 className="h-display mt-2">
-          All <span className="italic-emph text-teal">Listings</span>
+          My <span className="italic-emph text-teal">Listings</span>
         </h1>
         <p className="lede mt-3 max-w-2xl">
           Filter by status, price, or beds. New listings are added the moment
